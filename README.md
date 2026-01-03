@@ -47,13 +47,13 @@ The application allows users to search for games using partial matches [and typo
 It consists of:
 - React frontend (UI matching the provided screenshot)
 - Node.js backend (Express)
-- SQLite database
+- PostgreSQL database (using Supabase)
 
 The dataset includes (at minimum):
 - FIFA 23
 - Red Dead Redemption 2
 - Split Fiction
-Additional game entries were added to better demonstrate search behaviour.
+Several game entries were added to better demonstrate search behaviour.
 
 ## Tech Stack
 
@@ -64,10 +64,9 @@ __Frontend__ (TODO: fix the frontend based on implementation, not started yet)
 
 __Backend__
 - Node.js (Express)
-- SQLite (via sqlite3)
 
 __Database__
-- SQLite
+- PostgreSQL (via Supabase)
 
 ## Public API
 The backend exposes the following public endpoints:
@@ -84,22 +83,40 @@ GET /list?search=<gamename>
 ```
 Returns games matching the search query.
 Supports partial matches
-Supports typo-tolerant search (CONSIDERATION)
+Supports typo-tolerant search to some extent
 
 ---
 
 ## Search Implementation (Fuzzy Search)
-https://www.meilisearch.com/blog/fuzzy-search
-TODO: decide on the way of implementation
-> lavenshtein distance algorithm, hamming distance (for typos support)
-> substring search (easiest implementation)
+
+The search system is designed to tolerate typos, prioritize relevant results, and rank matches intelligently instead of simply returning anything that matches.
+
+__Algorithm: Triple-Weighted Scoring__
+
+Rather than using a single matching strategy, the search calculates a relevance_score for each game based on three complementary factors:
+
+1. Trigram Similarity (`pg_trgm`)
+    * Uses PostgreSQL’s strict_word_similarity to compare the search term against the game title. 
+    * Works well for partial inputs and prefix searches.
+
+2. Exact Word Match Bonus (`Regex`)
+    * Applies an additional weight if the search term matches a full word in the title.
+    * Uses PostgreSQL word boundaries (`\y`) to avoid false positives.
+
+3. Levenshtein Distance (`Typo Tolerance`)
+
+    * Calculates the edit distance between the search term and words in the title.
+
+    * Allows results to appear even when the user makes small spelling mistakes.
+
+__TODO: add some graphs__ 
 
 ## Database schema
 TODO: insert database schema
 
 ## Deployment
 TODO: deployment
-> Microsoft Azure
+> Microsoft Azure ???
 > Docker Compose
 
 ## AI Usage & Prompt History
