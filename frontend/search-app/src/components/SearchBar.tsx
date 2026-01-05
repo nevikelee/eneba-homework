@@ -1,80 +1,68 @@
-import React, { useState } from 'react';
-import { Search, X } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Search, X, ArrowLeft } from 'lucide-react';
+import './SearchBar.css';
 
 function SearchBar() {
     const [query, setQuery] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const handleClear = () => {
+    const handleSearchClick = () => {
+        setIsOpen(true);
+        setTimeout(() => inputRef.current?.focus(), 50);
+    };
+
+    const handleBack = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsOpen(false);
         setQuery('');
     };
 
 
-    return (
-        // TODO: Fix submit action
-        <form style={styles.search} action="http://localhost:8080/api/games">
+    const handleClear = (e: React.MouseEvent) => {
+        e.stopPropagation(); 
+        setQuery('');
+        inputRef.current?.focus();
+    };
 
-            <div style={styles.iconWrapper}>
-                <Search size={20} color="#fff" />
+    return (
+        <div className={`search ${isOpen ? 'mobile-open' : ''}`} onClick={handleSearchClick}>
+            
+            {isOpen && (
+                <button className="backButton" onClick={handleBack}>
+                    <ArrowLeft size={24} color="#fff" />
+                </button>
+            )}
+
+            <div className="iconWrapper searchIcon">
+                <Search size={22} color="#fff" strokeWidth={3} />
             </div>
 
-            <div style={styles.inputContainer}>
+            <div className="inputContainer">
                 <input 
+                    ref={inputRef}
                     type="text" 
-                    name="search" 
-                    aria-label="Search" 
                     placeholder="Search for games" 
-                    style={styles.searchInput}
+                    className="searchInput"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </div>
 
-            <div style={styles.iconWrapper}>
+            <div className="iconWrapper">
                 {query.length > 0 && (
-                    <X size={20} color="#fff" style={{ cursor: 'pointer' }} 
-                        onClick={handleClear}
-                    />
+                    <button 
+                        type="button" 
+                        onClick={handleClear} 
+                        className="search-clear-btn clearButton" 
+                    >
+                        <X size={26} strokeWidth={2} />
+                    </button>
                 )}
             </div>
-        </form>
+        </div>
     );
 }
 
-const styles: { [key: string]: React.CSSProperties } = {
-    search: {
-        flex: '0 1 100%',
-        display: 'flex',
-        alignItems: 'center',
-        height: '40px',       
-        border: '1px solid #fff',
-        borderRadius: '4px',
-        overflow: 'hidden',
-        backgroundColor: 'rgba(255,255,255,0.1)',
-    },
-    inputContainer: {
-        flex: 1,
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-    },
-    searchInput: {
-        width: '100%',
-        height: '100%',       
-        background: 'transparent',
-        border: 'none',
-        outline: 'none',
-        color: '#fff',
-        fontSize: '16px',
-        padding: '0 8px',
-        lineHeight: 'normal',
-    },
-    iconWrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 10px',
-        width: '40px',
-        justifyContent: 'center',
-    }
-}
 
 export default SearchBar;
