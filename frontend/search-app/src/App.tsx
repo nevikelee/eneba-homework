@@ -1,19 +1,22 @@
-import Navigation from './components/Navigation.tsx'
+import Navigation from './components/Navigation';
+import GamesPage from './pages/GamesPage';
+import PageContainer from './components/PageContainer';
 
 function App() {
   return (
-  <div>
+    <>
+
       <Navigation />
 
-      {/* TODO: GAMES LIST VIEW */}
-
       <main style={{ paddingTop: '80px' }}>
-         {/* <GameList /> */}
+        <PageContainer>
+          <GamesPage />
+        </PageContainer>
       </main>
-    
-  </div>
+
+
+    </>
   );
-  
 }
 
 export default App;
