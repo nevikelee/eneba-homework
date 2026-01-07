@@ -1,213 +1,372 @@
 .card {
-  background-color: #1f0a4d;
-  overflow: hidden;
-  color: #fff;
-  border: 1px solid #63e3c2;
-  font-family: 'system-ui; -apple-system; sans-serif';
-  transition: 'transform 0.2s; border-color 0.2s';
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
+    background-color: #1f0a4d;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    border: 1px solid #63e3c2;
+    font-family: inherit;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
-
 .imageWrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 140%;
-  overflow: hidden;
-
-
+    position: relative;
+    width: 100%;
+    padding-top: 140%;
+    overflow: hidden;
+    grid-area: img;
 }
 
 .inactive {
-  opacity: 0.5;
+    opacity: 0.5;
 }
-
-
-
 
 .image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.cashbackBadge {
-  position: absolute;
-  bottom: 45px;
-  left: 0;
-  background-color: #00d9b4;
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 0 2px 2px 0;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .cashbackIcon {
-  width: 16px;
-  height: 16px;
-}
-
-.wishlistBtn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 16px;
+    height: 16px;
 }
 
 .platformBanner {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: 'rgba(0; 0; 0; 0.55)';
-  backdrop-filter: blur(5px);
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-  justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(5px);
+
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
 }
 
 .platformContent {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-
 .platformIcon {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
-
 .platformText {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
 }
 
 .content {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
+    padding: 16px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    line-height: 1;
+    background-color: #1f0a4d;
+    grid-area: top;
 }
 
 .title {
-  font-size: 15px;
-  font-weight: 800;
-  margin: 0;
-  line-height: 1.3;
-  color: #fff;
-}
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
 
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    max-height: 3em;
+}
 .region {
-  font-size: 13px;
-  font-weight: 800;
-  margin: 0;
-  color: #00d9b4;
-  letter-spacing: 0.5px;
+    font-size: 13px;
+    font-weight: 800;
+    margin: 0;
+    color: #00d9b4;
+    letter-spacing: 0.5px;
 }
-
-
 .soldOut {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 64px;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50px;
+    margin-top: 1rem;
+    gap: 1rem;
 }
-
 .soldOutText {
-  font-weight: 500;
-  font-size: 1.6rem;
+    font-weight: 500;
 }
-
 .priceSection {
-  margin-top: 8px;
+    margin-top: 1rem;
 }
-
 .priceTop {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
 }
-
 .fromText {
-  font-size: 13px;
-  color: #aaa;
+    font-size: 13px;
+    font-weight: 700;
+    color: #aaa;
 }
-
 .originalPrice {
-  font-size: 13px;
-  color: #aaa;
-  text-decoration: line-through;
+    font-size: 13px;
+    color: #aaa;
+    font-weight: 700;
+    text-decoration: line-through;
 }
-
 .discountBadge {
-  color: #84e916;
-  padding: 2px 8px;
-  font-weight: 700;
+    color: #84e916;
+    font-weight: 700;
 }
-
 .priceBottom {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
-
 .finalPrice {
-  font-size: 24px;
-  font-weight: 800;
-  color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
 }
-
 .infoIcon {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
 }
-
+.infoIcon:hover {
+    cursor: help;
+}
 .cashbackText {
-  font-size: 13px;
-  font-weight: 700;
-  margin: 0;
-  color: #84e916;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0;
+    color: #84e916;
 }
-
 .likesSection {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+.likesCount {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #aaa;
 }
 
-.likesCount {
-  font-size: 14px;
-  font-weight: 600;
-  color: #aaa;
-};
+.hoverButtons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    padding: 16px;
+    background: linear-gradient(
+        to top,
+        rgba(31, 10, 77, 0.98),
+        rgba(31, 10, 77, 0.9),
+        transparent
+    );
+    grid-area: bottom;
+}
+
+.hoverButtons {
+    display: grid;
+    gap: 10px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.card:not(.sold):hover .hoverButtons {
+    transform: translateY(0);
+}
+
+.content,
+.platformBanner {
+    transition: transform 0.3s ease;
+}
+
+.card:not(.sold):hover .platformBanner,
+.card:not(.sold):hover .content {
+    transform: translateY(-90px);
+}
+
+.sold:hover .imageWrapper {
+    opacity: 0.4;
+}
+
+.card:not(.sold):hover .hoverButtons {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hoverButtons button {
+    border-radius: 0;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.addToCartBtn {
+    background-color: #fad318;
+    color: #000;
+}
+.addToCartBtn:hover {
+    background-color: #f0a613;
+    border: 1px solid #f0a613;
+}
+.exploreBtn {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.exploreBtn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: #fad318;
+}
+
+.cartIcon {
+    display: none;
+}
+
+.cartText {
+    display: inline;
+}
+
+@media (min-width: 851px) {
+    .cashbackBadge {
+        position: absolute;
+        top: -80px;
+        left: 0;
+        background-color: #00d9b4;
+        color: #000;
+        padding: 6px 12px;
+        border-radius: 0 2px 2px 0;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 2;
+    }
+}
+
+@media (max-width: 850px) {
+    .cartIcon {
+        display: flex;
+    }
+    .cartText {
+        display: none;
+    }
+
+    .hoverButtons {
+        transform: none !important;
+        opacity: 1 !important;
+        justify-self: right;
+        width: 20%;
+    }
+
+    .hoverButtons .exploreBtn {
+        display: none;
+    }
+
+    .addToCartBtn {
+        padding: 12px;
+        justify-content: center;
+        justify-self: right;
+        background-color: transparent;
+        border: 1px solid #fff;
+        z-index: 999;
+    }
+
+    .addToCartBtn:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-color: #fad318;
+    }
+
+    .addToCartBtn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .card {
+        flex-direction: row;
+        align-items: stretch;
+        min-height: 160px;
+    }
+
+    .titleRegion {
+        width: 70%;
+    }
+
+    .wishlistRibbonContainer {
+        display: block !important;
+    }
+
+    .imageWrapper {
+        width: 20%;
+        padding-top: 0;
+        aspect-ratio: 2 / 3;
+        flex-shrink: 0;
+        margin: 30px;
+    }
+
+    .image.hovered {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+
+    .content {
+        transform: none !important;
+        margin-top: 0;
+        padding: 16px;
+        flex: 1;
+    }
+
+    .platformBanner {
+        transform: none !important;
+    }
+
+    .cashbackBadge {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        padding: 5px 8px;
+        background-color: #00d9b4;
+        color: #1f0a4d;
+        display: flex;
+        align-items: center;
+    }
+
+    .cashbackBadge svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cashbackBadge .cashbackText {
+        display: none;
+    }
+}
