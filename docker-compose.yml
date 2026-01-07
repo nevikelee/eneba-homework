@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: eminik/eneba-backend:latest
+    container_name: backend
+    ports:
+      - "8080:8080"
+    restart: always
+
+  frontend:
+    image: eminik/eneba-frontend:latest
+    container_name: frontend
+    ports:
+      - "80:80" 
+    environment:
+      VITE_API_URL: http://backend:8080
+    depends_on:
+      - backend
+    restart: always
