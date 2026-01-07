@@ -8,6 +8,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/api/deliveries', async (req, res) => {
+  try {
+    const rows = await sql`
+      SELECT * FROM deliveries;
+    `;
+
+    return res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Database query failed' });
+  }
+});
+
 app.get('/api/games', async (req, res) => {
   const search = req.query.search;
 
@@ -66,6 +79,8 @@ app.get('/api/games', async (req, res) => {
     res.status(500).json({ error: 'Database query failed' });
   }
 });
+
+
 
 
 
