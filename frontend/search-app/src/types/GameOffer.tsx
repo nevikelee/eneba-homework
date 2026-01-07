@@ -1,4 +1,4 @@
-export default interface GameOffer {
+export default interface GameOfferBase {
   id: number;
   game_id: number;
   title: string;
@@ -13,4 +13,8 @@ export default interface GameOffer {
   cashback: number;
 
   image_url: string;
+}
+
+export type GameOffer = GameOfferBase & {
+  likes: number
 }
