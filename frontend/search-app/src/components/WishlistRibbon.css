@@ -1,0 +1,48 @@
+.wishlistRibbonContainer {
+    position: absolute;
+    top: -2px;
+    right: 1rem;
+    z-index: 3;
+    display: none;
+}
+
+.card:hover .wishlistRibbonContainer {
+    display: block;
+}
+
+.wishlistBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.wishlistBtn:hover {
+    transform: scale(1.05);
+}
+
+.wishlistBtnInner {
+    display: block;
+    background: transparent;
+}
+
+.wishlistIconWrapper {
+    display: block;
+    background: transparent;
+}
+
+.WishlistRibbon {
+    transition: opacity 0.2s ease;
+    opacity: 0.5;
+}
+
+.wishlistBtn:hover .WishlistRibbon {
+    opacity: 1;
+}
+
+.WishlistRibbon-outline,
+.WishlistRibbon-heart {
+    transition: all 0.2s ease;
+}
