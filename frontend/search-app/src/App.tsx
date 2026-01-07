@@ -1,20 +1,18 @@
-import Navigation from './components/Navigation';
-import GamesPage from './pages/GamesPage';
-import PageContainer from './components/PageContainer';
+import GamesPage from "./pages/GamesPage";
+import PageContainer from "./components/PageContainer";
+
+import "./index.css";
 
 function App() {
   return (
     <>
+      {/* <Navigation /> */}
 
-      <Navigation />
-
-      <main style={{ paddingTop: '80px' }}>
+      <main className="mainPage">
         <PageContainer>
           <GamesPage />
         </PageContainer>
       </main>
-
-
     </>
   );
 }
