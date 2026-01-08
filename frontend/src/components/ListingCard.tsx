@@ -114,7 +114,7 @@ const ListingCard: React.FC<Props> = ({ offer, likes, delivery }) => {
                     </span>
                   </>
                 ) : (
-                  <span className="FromText">From</span>
+                  <span className="fromText">From</span>
                 )}
               </div>
 
