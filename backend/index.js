@@ -8,7 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/deliveries', async (req, res) => {
+
+
+app.get(`/api/deliveries`, async (req, res) => {
   try {
     const rows = await sql`
       SELECT * FROM deliveries;
@@ -21,7 +23,7 @@ app.get('/api/deliveries', async (req, res) => {
   }
 });
 
-app.get('/api/games', async (req, res) => {
+app.get(`/api/list`, async (req, res) => {
   const search = req.query.search;
 
   try {

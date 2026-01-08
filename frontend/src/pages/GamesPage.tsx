@@ -14,7 +14,7 @@ const GamesPage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:8080/api/games${
+        `/api/list${
           query ? `?search=${encodeURIComponent(query)}` : ""
         }`
       );
@@ -47,7 +47,7 @@ const GamesPage = () => {
 
       // Fetch deliveries if not already done
       if (Object.keys(deliveryMap).length === 0) {
-        const deliveryRes = await fetch("http://localhost:8080/api/deliveries");
+        const deliveryRes = await fetch(`/api/deliveries`);
         const deliveryData: Delivery[] = await deliveryRes.json();
         const map: Record<string, Delivery> = {};
         deliveryData.forEach((item) => (map[item.id.toString()] = item));
