@@ -19,6 +19,21 @@ services:
       - backend
     restart: always
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx_gateway
+    networks:
+      shared-services:
+        aliases:
+          - nginx_gateway
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - frontend
+
 networks: 
   shared-services: 
     external: true 
