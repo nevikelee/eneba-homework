@@ -2,12 +2,24 @@ services:
   backend:
     image: eminik/eneba-backend:latest
     container_name: backend
+    networks: 
+      shared-services: 
+        aliases: 
+          - backend
     restart: always
 
   frontend:
     image: eminik/eneba-frontend:latest
     container_name: frontend
+    networks: 
+      shared-services: 
+        aliases: 
+          - frontend
     depends_on:
       - backend
     restart: always
 
+networks: 
+  shared-services: 
+    external: true 
+    name: shared-services
