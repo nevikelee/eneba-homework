@@ -167,8 +167,8 @@ Rather than using a single matching strategy, the search calculates a relevance_
 
 The application is fully self-hosted and accessible via the following public URLs:
 
-- **Frontend:** [https://api.eminik25.treok.eu/](https://api.eminik25.treok.eu/)  
-- **Backend (API):** [https://api.eminik25.treok.eu/api/list](https://api.eminik25.treok.eu/api/list)
+- **Frontend:** [https://eminik.norwayeast.cloudapp.azure.com/](https://eminik.norwayeast.cloudapp.azure.com/)  
+- **Backend (API):** [https://eminik.norwayeast.cloudapp.azure.com/api/list](https://eminik.norwayeast.cloudapp.azure.com/api/list)
 
 ### Hosting Environment
 
